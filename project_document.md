@@ -12,3 +12,4 @@ This document tracks all the finalized steps and decisions made during the devel
 2. **[DONE]** Configure individual environment profiles (Skills) for Frontend, Backend, and Database.
 3. **[DONE]** Initialize FastAPI Backend and Database schema placeholder.
 4. **[DONE]** Initialize Next.js frontend application structure.
+5. **[DONE]** Provisioned Neon Postgres Database (`OnlineQuizSystem`) and successfully verified the connection string.
