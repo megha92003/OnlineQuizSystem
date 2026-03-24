@@ -1,4 +1,4 @@
-# Online Quiz System - Project Document
+# OnlineQuizSystem - Project Document
 
 This document tracks all the finalized steps and decisions made during the development of the Online Quiz System.
 

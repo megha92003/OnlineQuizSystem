@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = FastAPI(title="Online Quiz System API")
+app = FastAPI(title="OnlineQuizSystem")
 
 # Configure CORS
 app.add_middleware(
