@@ -7,3 +7,18 @@ __pycache__/
 .pytest_cache/
 node_modules/
 venv/
+*.py
+!.dockerignore
+!backend/main.py
+!db/schema.sql
+!frontend/app/page.tsx
+# Setup Scripts
+create_render_service.py
+deploy_vercel.py
+get_repo_id.py
+list_render_services.py
+get_connection.py
+create_tables.py
+test_render.py
+test_vercel.py
+test_github.py
