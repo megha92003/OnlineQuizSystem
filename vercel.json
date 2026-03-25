@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "name": "online-quiz-system-frontend",
+  "rootDirectory": "frontend",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://online-quiz-system-backend.onrender.com"
+  }
+}
