@@ -16,5 +16,6 @@ This document tracks all the finalized steps and decisions made during the devel
 6. **[DONE]** Updated Neon DB schema with `password_hash` and `display_name` for user profiles.
 7. **[DONE]** Implemented FastAPI authentication endpoints (`/api/signup`, `/api/signin`) and CORS.
 8. **[DONE]** Created premium landing page with interactive Sign In/Sign Up modals.
-9. **[DONE]** Deployed and linked Backend to Render (`online-quiz-system-backend`) with GitHub auto-deploy.
-10. **[MANUAL]** Deployment of Frontend to Vercel requires manual import due to API permissions.
+9. **[DONE]** Deployed and linked Backend to Render (`online-quiz-system-backend`) with GitHub auto-deploy via `render.yaml`.
+10. **[DONE]** Configured Frontend for Vercel auto-deployment via `vercel.json`.
+11. **[DONE]** Successfully interlinked GitHub, Neon, Render, and Vercel with all API tokens documented.
