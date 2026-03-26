@@ -1,8 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
-import psycopg2
-import bcrypt
 import os
 import logging
 from dotenv import load_dotenv
@@ -18,10 +16,10 @@ app = FastAPI(title="OnlineQuizSystem")
 
 @app.on_event("startup")
 async def startup_event():
-    logger.info("Application is starting up...")
+    logger.info("Application is starting up (Simplified Startup)...")
     DATABASE_URL = os.getenv("DATABASE_URL")
     if not DATABASE_URL:
-        logger.error("DATABASE_URL environment variable is missing!")
+        logger.warning("DATABASE_URL environment variable is missing!")
     else:
         logger.info("DATABASE_URL is set.")
 
@@ -35,6 +33,7 @@ app.add_middleware(
 )
 
 def get_db_conn():
+    import psycopg2 # Lazy import to prevent startup crash
     DATABASE_URL = os.getenv("DATABASE_URL")
     try:
         if not DATABASE_URL:
@@ -61,10 +60,19 @@ def read_root():
 
 @app.get("/api/health")
 def health_check():
-    return {"status": "healthy"}
+    health_info = {
+        "status": "healthy",
+        "env": {
+            "DATABASE_URL": "Set" if os.getenv("DATABASE_URL") else "Missing",
+            "PORT": os.getenv("PORT", "Not Set")
+        }
+    }
+    return health_info
 
 @app.post("/api/signup")
 def signup(user: UserSignup):
+    import psycopg2
+    import bcrypt
     conn = None
     try:
         conn = get_db_conn()
@@ -85,12 +93,13 @@ def signup(user: UserSignup):
     except Exception as e:
         if conn: conn.rollback()
         logger.error(f"Signup error: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail=str(e))
     finally:
         if conn: conn.close()
 
 @app.post("/api/signin")
 def signin(user: UserSignin):
+    import bcrypt
     conn = None
     try:
         conn = get_db_conn()
@@ -119,6 +128,6 @@ def signin(user: UserSignin):
         raise
     except Exception as e:
         logger.error(f"Signin error: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail=str(e))
     finally:
         if conn: conn.close()
