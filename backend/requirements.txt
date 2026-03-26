@@ -4,3 +4,4 @@ pydantic[email]
 psycopg2-binary
 bcrypt
 python-dotenv
+gunicorn

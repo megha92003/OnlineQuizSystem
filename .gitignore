@@ -7,11 +7,8 @@ __pycache__/
 .pytest_cache/
 node_modules/
 venv/
-*.py
-!.dockerignore
-!backend/main.py
-!db/schema.sql
-!frontend/app/page.tsx
+.venv/
+.python-version
 # Setup Scripts
 create_render_service.py
 deploy_vercel.py
