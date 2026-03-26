@@ -1,3 +1,10 @@
+print("--- STARTING MAIN.PY ---")
+import sys
+import os
+print(f"Python version: {sys.version}")
+print(f"Current working directory: {os.getcwd()}")
+print(f"Contents of CWD: {os.listdir('.')}")
+
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
