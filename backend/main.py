@@ -1,10 +1,3 @@
-print("--- STARTING MAIN.PY ---")
-import sys
-import os
-print(f"Python version: {sys.version}")
-print(f"Current working directory: {os.getcwd()}")
-print(f"Contents of CWD: {os.listdir('.')}")
-
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
@@ -12,7 +5,9 @@ import psycopg2
 import bcrypt
 import os
 import logging
+from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
 # Configure logging
@@ -42,6 +37,8 @@ app.add_middleware(
 def get_db_conn():
     DATABASE_URL = os.getenv("DATABASE_URL")
     try:
+        if not DATABASE_URL:
+            raise ValueError("DATABASE_URL is not set")
         conn = psycopg2.connect(DATABASE_URL)
         return conn
     except Exception as e:
@@ -68,48 +65,60 @@ def health_check():
 
 @app.post("/api/signup")
 def signup(user: UserSignup):
-    conn = get_db_conn()
-    cur = conn.cursor()
-    salt = bcrypt.gensalt()
-    password_hash = bcrypt.hashpw(user.password.encode('utf-8'), salt).decode('utf-8')
+    conn = None
     try:
+        conn = get_db_conn()
+        cur = conn.cursor()
+        salt = bcrypt.gensalt()
+        password_hash = bcrypt.hashpw(user.password.encode('utf-8'), salt).decode('utf-8')
         cur.execute(
             "INSERT INTO users (username, email, password_hash, display_name) VALUES (%s, %s, %s, %s) RETURNING id",
             (user.username, user.email, password_hash, user.display_name or user.username)
         )
         user_id = cur.fetchone()[0]
         conn.commit()
+        cur.close()
         return {"message": "User created successfully", "user_id": user_id}
     except psycopg2.IntegrityError:
-        conn.rollback()
+        if conn: conn.rollback()
         raise HTTPException(status_code=400, detail="Username or email already exists")
+    except Exception as e:
+        if conn: conn.rollback()
+        logger.error(f"Signup error: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
     finally:
-        cur.close()
-        conn.close()
+        if conn: conn.close()
 
 @app.post("/api/signin")
 def signin(user: UserSignin):
-    conn = get_db_conn()
-    cur = conn.cursor()
-    cur.execute("SELECT id, username, password_hash, display_name FROM users WHERE username = %s", (user.username,))
-    db_user = cur.fetchone()
-    if not db_user:
-        cur.close()
-        conn.close()
-        raise HTTPException(status_code=401, detail="Invalid username or password")
-    user_id, username, password_hash, display_name = db_user
-    if bcrypt.checkpw(user.password.encode('utf-8'), password_hash.encode('utf-8')):
-        cur.close()
-        conn.close()
-        return {
-            "message": "Login successful",
-            "user": {
-                "id": user_id,
-                "username": username,
-                "display_name": display_name
+    conn = None
+    try:
+        conn = get_db_conn()
+        cur = conn.cursor()
+        cur.execute("SELECT id, username, password_hash, display_name FROM users WHERE username = %s", (user.username,))
+        db_user = cur.fetchone()
+        if not db_user:
+            cur.close()
+            raise HTTPException(status_code=401, detail="Invalid username or password")
+        
+        user_id, username, password_hash, display_name = db_user
+        if bcrypt.checkpw(user.password.encode('utf-8'), password_hash.encode('utf-8')):
+            cur.close()
+            return {
+                "message": "Login successful",
+                "user": {
+                    "id": user_id,
+                    "username": username,
+                    "display_name": display_name
+                }
             }
-        }
-    else:
-        cur.close()
-        conn.close()
-        raise HTTPException(status_code=401, detail="Invalid username or password")
+        else:
+            cur.close()
+            raise HTTPException(status_code=401, detail="Invalid username or password")
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Signin error: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
+    finally:
+        if conn: conn.close()
