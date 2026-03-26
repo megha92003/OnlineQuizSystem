@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
@@ -47,7 +48,7 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-4">
           <button onClick={() => { setShowModal("signin"); setMessage(""); }} className="text-sm font-medium hover:text-purple-400 transition-colors">Log in</button>
-          <button onClick={() => { setShowModal("signup"); setMessage(""); }} className="px-5 py-2.5 rounded-full bg-white text-black text-sm font-semibold hover:bg-zinc-200 transition-all active:scale-95">Get Started</button>
+          <Link href="/signup" className="px-5 py-2.5 rounded-full bg-white text-black text-sm font-semibold hover:bg-zinc-200 transition-all active:scale-95">Get Started</Link>
         </div>
       </nav>
       <main className="relative z-10 max-w-7xl mx-auto px-8 py-24 md:py-32 flex flex-col items-center text-center">
@@ -61,7 +62,7 @@ export default function Home() {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-[1.1]">Challenge your <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400 animate-gradient">Intelligence.</span></h1>
         <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mb-12 leading-relaxed">The ultimate platform for competitive quizzes and interactive learning. Build, share, and compete in real-time with thousands of users worldwide.</p>
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          <button onClick={() => setShowModal("signup")} className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 font-bold text-lg shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40 transition-all active:scale-95">Create Free Account</button>
+          <Link href="/signup" className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 font-bold text-lg shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40 transition-all active:scale-95">Create Free Account</Link>
           <button className="px-8 py-4 rounded-full border border-white/10 bg-white/5 font-semibold text-lg hover:bg-white/10 transition-colors">Browse Quizzes</button>
         </div>
         <div className="mt-20 w-full max-w-5xl aspect-video rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-transparent p-4 shadow-2xl animate-float">
