@@ -4,11 +4,24 @@ from pydantic import BaseModel, EmailStr
 import psycopg2
 import bcrypt
 import os
-from dotenv import load_dotenv
+import logging
 
 load_dotenv()
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 app = FastAPI(title="OnlineQuizSystem")
+
+@app.on_event("startup")
+async def startup_event():
+    logger.info("Application is starting up...")
+    DATABASE_URL = os.getenv("DATABASE_URL")
+    if not DATABASE_URL:
+        logger.error("DATABASE_URL environment variable is missing!")
+    else:
+        logger.info("DATABASE_URL is set.")
 
 # Configure CORS
 app.add_middleware(
@@ -19,11 +32,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-
 def get_db_conn():
-    conn = psycopg2.connect(DATABASE_URL)
-    return conn
+    DATABASE_URL = os.getenv("DATABASE_URL")
+    try:
+        conn = psycopg2.connect(DATABASE_URL)
+        return conn
+    except Exception as e:
+        logger.error(f"Failed to connect to database: {e}")
+        raise HTTPException(status_code=500, detail="Database connection error")
 
 class UserSignup(BaseModel):
     username: str
