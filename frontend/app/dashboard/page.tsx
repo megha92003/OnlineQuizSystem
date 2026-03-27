@@ -72,30 +72,37 @@ export default function DashboardPage() {
                 <Link href="#" className="text-indigo-400 hover:text-indigo-300 text-sm font-medium">View All</Link>
               </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Link href="/dashboard/categories/science-nature" className="group">
-                <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 text-left hover:scale-[1.02] transition-all duration-300">
-                  <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🔬</span>
-                  <h3 className="text-xl font-bold mb-1">Science & Nature</h3>
-                  <p className="text-sm text-gray-400">125 Quizzes</p>
-                </div>
-              </Link>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <Link href="/dashboard/categories/science-nature" className="group">
+                  <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 text-left hover:scale-[1.02] transition-all duration-300">
+                    <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🔬</span>
+                    <h3 className="text-xl font-bold mb-1">Science & Nature</h3>
+                    <p className="text-sm text-gray-400">125 Quizzes</p>
+                  </div>
+                </Link>
 
-              {[
-                { name: "World History", icon: "🌍", color: "from-amber-500/20 to-orange-500/20", borderColor: "border-amber-500/30", count: "84 Quizzes" },
-                { name: "Technology", icon: "💻", color: "from-indigo-500/20 to-purple-500/20", borderColor: "border-indigo-500/30", count: "210 Quizzes" },
-                { name: "Arts & Literature", icon: "🎨", color: "from-rose-500/20 to-pink-500/20", borderColor: "border-rose-500/30", count: "56 Quizzes" },
-              ].map((category, idx) => (
-                <button
-                  key={idx}
-                  className={`p-6 rounded-2xl bg-gradient-to-br ${category.color} border ${category.borderColor} text-left group hover:scale-[1.02] transition-all duration-300`}
-                >
-                  <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">{category.icon}</span>
-                  <h3 className="text-xl font-bold mb-1">{category.name}</h3>
-                  <p className="text-sm text-gray-400">{category.count}</p>
-                </button>
-              ))}
-            </div>
+                <Link href="/dashboard/categories/world-history" className="group">
+                  <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 text-left hover:scale-[1.02] transition-all duration-300">
+                    <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🌍</span>
+                    <h3 className="text-xl font-bold mb-1">World History</h3>
+                    <p className="text-sm text-gray-400">84 Quizzes</p>
+                  </div>
+                </Link>
+
+                {[
+                  { name: "Technology", icon: "💻", color: "from-indigo-500/20 to-purple-500/20", borderColor: "border-indigo-500/30", count: "210 Quizzes" },
+                  { name: "Arts & Literature", icon: "🎨", color: "from-rose-500/20 to-pink-500/20", borderColor: "border-rose-500/30", count: "56 Quizzes" },
+                ].map((category, idx) => (
+                  <button
+                    key={idx}
+                    className={`p-6 rounded-2xl bg-gradient-to-br ${category.color} border ${category.borderColor} text-left group hover:scale-[1.02] transition-all duration-300`}
+                  >
+                    <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">{category.icon}</span>
+                    <h3 className="text-xl font-bold mb-1">{category.name}</h3>
+                    <p className="text-sm text-gray-400">{category.count}</p>
+                  </button>
+                ))}
+              </div>
             </section>
           </div>
 
