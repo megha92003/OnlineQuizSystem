@@ -1,77 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const QUESTIONS = [
-  {
-    id: 1,
-    question: "Which of the following is a displacement reaction?",
-    options: ["Mg + O2 → MgO", "Fe + CuSO4 → FeSO4 + Cu", "CaCO3 → CaO + CO2", "H2 + O2 → H2O"],
-    answer: "Fe + CuSO4 → FeSO4 + Cu",
-  },
-  {
-    id: 2,
-    question: "What is the pH value of pure water at 25°C?",
-    options: ["1", "7", "14", "0"],
-    answer: "7",
-  },
-  {
-    id: 3,
-    question: "Which metal is the most abundant in the Earth's crust?",
-    options: ["Iron", "Gold", "Aluminium", "Copper"],
-    answer: "Aluminium",
-  },
-  {
-    id: 4,
-    question: "The site of photosynthesis in a plant cell is:",
-    options: ["Mitochondria", "Ribosome", "Chloroplast", "Nucleus"],
-    answer: "Chloroplast",
-  },
-  {
-    id: 5,
-    question: "Which gland in the human body is known as the 'Master Gland'?",
-    options: ["Thyroid", "Adrenal", "Pituitary", "Pancreas"],
-    answer: "Pituitary",
-  },
-  {
-    id: 6,
-    question: "Who is known as the Father of Genetics?",
-    options: ["Charles Darwin", "Gregor Mendel", "Lamarck", "Watson & Crick"],
-    answer: "Gregor Mendel",
-  },
-  {
-    id: 7,
-    question: "Which type of mirror is used by dentists to see large images of teeth?",
-    options: ["Convex mirror", "Plane mirror", "Concave mirror", "None of these"],
-    answer: "Concave mirror",
-  },
-  {
-    id: 8,
-    question: "The SI unit of resistivity is:",
-    options: ["Ohm", "Ohm-meter", "Ampere", "Volt"],
-    answer: "Ohm-meter",
-  },
-  {
-    id: 9,
-    question: "Which device is used to detect the presence of current in a circuit?",
-    options: ["Ammeter", "Voltmeter", "Galvanometer", "Generator"],
-    answer: "Galvanometer",
-  },
-  {
-    id: 10,
-    question: "What is the primary cause of ozone layer depletion?",
-    options: ["Carbon Dioxide", "Chlorofluorocarbons (CFCs)", "Methane", "Nitrogen Dioxide"],
-    answer: "Chlorofluorocarbons (CFCs)",
-  },
-];
-
-export default function ScienceNatureQuiz() {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [score, setScore] = useState(0);
-  const [showResult, setShowResult] = useState(false);
+export default function ScienceNatureCategoryPage() {
   const [user, setUser] = useState<any>(null);
   const router = useRouter();
 
@@ -84,134 +17,106 @@ export default function ScienceNatureQuiz() {
     }
   }, [router]);
 
-  const handleOptionSelect = (option: string) => {
-    setSelectedOption(option);
-  };
-
-  const handleNext = () => {
-    if (selectedOption === QUESTIONS[currentStep].answer) {
-      setScore(score + 1);
-    }
-
-    if (currentStep < QUESTIONS.length - 1) {
-      setCurrentStep(currentStep + 1);
-      setSelectedOption(null);
-    } else {
-      setShowResult(true);
-    }
-  };
-
   if (!user) return <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">Loading...</div>;
 
-  if (showResult) {
-    return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-6 font-sans">
-        <div className="max-w-md w-full text-center space-y-8 animate-fade-in">
-          <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-5xl mx-auto shadow-2xl shadow-indigo-500/20 mb-6">
-            🎉
-          </div>
-          <h1 className="text-4xl font-extrabold pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-            Quiz Completed!
-          </h1>
-          <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-4">
-            <p className="text-gray-400 text-lg">Your Score</p>
-            <div className="text-6xl font-black text-indigo-400">
-              {score} <span className="text-2xl text-gray-600 font-normal">/ {QUESTIONS.length}</span>
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white font-sans">
+      {/* Navigation Header */}
+      <nav className="border-b border-white/10 bg-[#0a0a0a]/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <Link href="/dashboard" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center font-bold text-xl group-hover:border-indigo-500/50 transition-all">
+              ←
             </div>
-            <p className="text-sm text-gray-500 italic mt-4">
-              {score === QUESTIONS.length ? "Nature Master! Perfect score." : score >= 3 ? "Great job! You know your science." : "Keep learning! Nature is full of wonders."}
-            </p>
+            <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">
+              Back to Dashboard
+            </span>
+          </Link>
+
+          <div className="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold text-indigo-400 uppercase tracking-widest">
+            Science & Nature
           </div>
-          <div className="grid grid-cols-2 gap-4 pt-4">
-            <button
-              onClick={() => {
-                setCurrentStep(0);
-                setScore(0);
-                setShowResult(false);
-                setSelectedOption(null);
-              }}
-              className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all"
-            >
-              Retry
-            </button>
+        </div>
+      </nav>
+
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <section className="mb-16">
+          <h1 className="text-5xl font-black mb-4 tracking-tight">Science & Nature</h1>
+          <p className="text-xl text-gray-400 max-w-2xl">
+            Explore the mysteries of the universe, from the depths of the ocean to the far reaches of space.
+          </p>
+        </section>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Grade 10 Science Card */}
+          <div className="p-8 rounded-3xl bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border border-indigo-500/30 space-y-6 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
+              <span className="text-7xl font-bold italic">10th</span>
+            </div>
+            <div className="space-y-4 relative z-10">
+              <div className="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/20">
+                🧬
+              </div>
+              <h3 className="text-2xl font-bold">Grade 10 Science</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Comprehensive 20 MCQ quiz covering Physics, Chemistry, and Biology essentials for 10th-grade students.
+              </p>
+              <div className="flex items-center gap-4 text-xs font-bold text-gray-500 uppercase tracking-widest">
+                <span>20 Questions</span>
+                <span>•</span>
+                <span>15 Minutes</span>
+              </div>
+            </div>
             <Link
-              href="/dashboard"
-              className="px-6 py-4 bg-indigo-600 rounded-2xl font-bold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center"
+              href="/dashboard/categories/science-nature/quiz"
+              className="block w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-center rounded-2xl font-bold transition-all shadow-lg shadow-indigo-600/20 active:scale-[0.98] relative z-10"
             >
-              Dashboard
+              Start Quiz
             </Link>
           </div>
-        </div>
-      </div>
-    );
-  }
 
-  const progress = ((currentStep + 1) / QUESTIONS.length) * 100;
-
-  return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white p-6 font-sans flex flex-col">
-      <header className="max-w-4xl mx-auto w-full py-8 flex items-center justify-between">
-        <Link href="/dashboard" className="text-sm font-medium text-gray-500 hover:text-white transition-colors flex items-center gap-2">
-          <span>←</span> Back to Dashboard
-        </Link>
-        <div className="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold text-indigo-400 uppercase tracking-widest">
-          Science & Nature
-        </div>
-      </header>
-
-      <main className="max-w-3xl mx-auto w-full flex-grow flex flex-col justify-center gap-12 pb-24">
-        {/* Progress Bar */}
-        <div className="space-y-3">
-          <div className="flex justify-between text-xs font-bold text-gray-500 tracking-wider">
-            <span>QUESTION {currentStep + 1} OF {QUESTIONS.length}</span>
-            <span>{Math.round(progress)}% COMPLETE</span>
+          {/* Quick Quiz Card (Old One) */}
+          <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-6 group hover:border-white/20 transition-all">
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl">
+                🔭
+              </div>
+              <h3 className="text-2xl font-bold">General Quiz</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                A quick 5-question jump-start to refresh your basic science facts.
+              </p>
+              <div className="flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                <span>5 Questions</span>
+                <span>•</span>
+                <span>3 Minutes</span>
+              </div>
+            </div>
+            <button
+               className="w-full py-4 bg-white/10 hover:bg-white/20 text-center rounded-2xl font-bold transition-all disabled:opacity-50 cursor-not-allowed"
+               disabled
+            >
+              Coming Soon
+            </button>
           </div>
-          <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-500 ease-out"
-              style={{ width: `${progress}%` }}
-            />
+
+          {/* Locked Category */}
+          <div className="p-8 rounded-3xl bg-white/5 border border-white/5 space-y-6 opacity-50 relative grayscale">
+             <div className="absolute inset-0 flex items-center justify-center z-20">
+                <span className="text-4xl">🔒</span>
+             </div>
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-2xl">
+                🌿
+              </div>
+              <h3 className="text-2xl font-bold">Plant Biology</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Deep dive into the world of botany and photosynthesis.
+              </p>
+            </div>
+            <button className="w-full py-4 bg-white/5 rounded-2xl font-bold cursor-not-allowed" disabled>
+              Locked
+            </button>
           </div>
-        </div>
-
-        {/* Question Area */}
-        <div className="space-y-10">
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight animate-fade-in-up">
-            {QUESTIONS[currentStep].question}
-          </h2>
-
-          <div className="grid gap-4">
-            {QUESTIONS[currentStep].options.map((option, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleOptionSelect(option)}
-                className={`group p-6 rounded-2xl border text-left flex items-center justify-between transition-all duration-300 ${
-                  selectedOption === option
-                    ? "bg-indigo-600 border-indigo-400 shadow-xl shadow-indigo-600/20 translate-x-1"
-                    : "bg-white/5 border-white/10 hover:border-white/30 hover:bg-white/[0.07]"
-                }`}
-              >
-                <span className={`text-lg font-medium ${selectedOption === option ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
-                  {option}
-                </span>
-                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                  selectedOption === option ? "border-white bg-white" : "border-white/20"
-                }`}>
-                  {selectedOption === option && <div className="w-2.5 h-2.5 bg-indigo-600 rounded-full" />}
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex justify-end">
-          <button
-            onClick={handleNext}
-            disabled={!selectedOption}
-            className="px-10 py-4 bg-white text-black font-black rounded-2xl hover:bg-indigo-50 transition-all active:scale-[0.98] shadow-xl shadow-white/5 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100 uppercase tracking-widest text-sm"
-          >
-            {currentStep === QUESTIONS.length - 1 ? "Finish Quiz" : "Next Question"}
-          </button>
         </div>
       </main>
     </div>
