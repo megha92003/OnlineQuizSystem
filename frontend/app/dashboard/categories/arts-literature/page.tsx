@@ -7,67 +7,67 @@ import Link from "next/link";
 const QUESTIONS = [
   {
     id: 1,
-    question: "What is the main function of the CPU in a computer?",
-    options: ["Storing files", "Processing data", "Displaying images", "Managing power"],
-    answer: "Processing data",
+    question: "Who wrote 'The Merchant of Venice'?",
+    options: ["Christopher Marlowe", "William Shakespeare", "John Milton", "Ben Jonson"],
+    answer: "William Shakespeare",
   },
   {
     id: 2,
-    question: "Which unit of measurement is used for CPU speed?",
-    options: ["Gigabytes (GB)", "Watts (W)", "Gigahertz (GHz)", "Megapixels (MP)"],
-    answer: "Gigahertz (GHz)",
+    question: "Which literary device uses 'like' or 'as' for comparison?",
+    options: ["Metaphor", "Simile", "Personification", "Hyperbole"],
+    answer: "Simile",
   },
   {
     id: 3,
-    question: "In a network, what does 'IP' stand for?",
-    options: ["Internal Program", "Internet Protocol", "Information Point", "Instant Presence"],
-    answer: "Internet Protocol",
+    question: "Who painted the 'Mona Lisa'?",
+    options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+    answer: "Leonardo da Vinci",
   },
   {
     id: 4,
-    question: "Which of these is a non-volatile memory?",
-    options: ["RAM", "Cache", "ROM", "Virtual Memory"],
-    answer: "ROM",
+    question: "What is the central theme of 'To Kill a Mockingbird'?",
+    options: ["Racial Injustice", "Greed", "War", "Technology"],
+    answer: "Racial Injustice",
   },
   {
     id: 5,
-    question: "What is the full form of 'WWW' in a website address?",
-    options: ["World Wide Web", "World Wide Wireless", "Web World Wide", "Web Writing Way"],
-    answer: "World Wide Web",
+    question: "Which figure of speech is 'The wind whispered'?",
+    options: ["Simile", "Metaphor", "Personification", "Alliteration"],
+    answer: "Personification",
   },
   {
     id: 6,
-    question: "Which protocol is primarily used to send emails?",
-    options: ["HTTP", "FTP", "SMTP", "POP3"],
-    answer: "SMTP",
+    question: "Who is the author of 'The Great Gatsby'?",
+    options: ["Ernest Hemingway", "F. Scott Fitzgerald", "Mark Twain", "J.D. Salinger"],
+    answer: "F. Scott Fitzgerald",
   },
   {
     id: 7,
-    question: "What is the smallest unit of digital information?",
-    options: ["Byte", "Bit", "Nibble", "Pixel"],
-    answer: "Bit",
+    question: "What is a 14-line poem called?",
+    options: ["Haiku", "Limerick", "Sonnet", "Ballad"],
+    answer: "Sonnet",
   },
   {
     id: 8,
-    question: "Which component connects all parts of a computer together?",
-    options: ["Hard Drive", "Power Supply", "Motherboard", "Video Card"],
-    answer: "Motherboard",
+    question: "Which art movement did Vincent van Gogh belong to?",
+    options: ["Impressionism", "Post-Impressionism", "Surrealism", "Cubism"],
+    answer: "Post-Impressionism",
   },
   {
     id: 9,
-    question: "What type of software is an Antivirus?",
-    options: ["System Software", "Application Software", "Utility Software", "Firmware"],
-    answer: "Utility Software",
+    question: "Who wrote the poem 'The Road Not Taken'?",
+    options: ["Walt Whitman", "Robert Frost", "Langston Hughes", "Maya Angelou"],
+    answer: "Robert Frost",
   },
   {
     id: 10,
-    question: "What is the process of converting readable data into an unreadable format?",
-    options: ["Decryption", "Encryption", "Compression", "Formatting"],
-    answer: "Encryption",
+    question: "What is the climax of a story?",
+    options: ["The beginning", "The introduction of characters", "The direct turning point", "The resolution"],
+    answer: "The direct turning point",
   },
 ];
 
-export default function TechnologyQuiz() {
+export default function ArtsLiteratureQuiz() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -106,12 +106,12 @@ export default function TechnologyQuiz() {
   if (showResult) {
     return (
       <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-6 font-sans">
-        <div className="max-w-md w-full text-center space-y-8 animate-fade-in text-white">
+        <div className="max-w-md w-full text-center space-y-8 animate-fade-in">
           <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-5xl mx-auto shadow-2xl shadow-indigo-500/20 mb-6">
-            🚀
+            🎭
           </div>
           <h1 className="text-4xl font-extrabold pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-            Tech Wizard Status!
+            Quiz Completed!
           </h1>
           <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-4">
             <p className="text-gray-400 text-lg">Your Score</p>
@@ -119,7 +119,7 @@ export default function TechnologyQuiz() {
               {score} <span className="text-2xl text-gray-600 font-normal">/ {QUESTIONS.length}</span>
             </div>
             <p className="text-sm text-gray-500 italic mt-4">
-              {score === QUESTIONS.length ? "Absolute Genius! You're a true tech expert." : score >= 7 ? "Impressive skills! You have a solid tech foundation." : "Technology is vast! Keep exploring and learning."}
+              {score === QUESTIONS.length ? "Literature Master! Perfect score." : score >= 7 ? "Great job! Your artistic knowledge is impressive." : "Good attempt! Keep exploring the world of arts."}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 pt-4">
@@ -130,13 +130,13 @@ export default function TechnologyQuiz() {
                 setShowResult(false);
                 setSelectedOption(null);
               }}
-              className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all text-white"
+              className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all"
             >
               Retry
             </button>
             <Link
               href="/dashboard"
-              className="px-6 py-4 bg-indigo-600 rounded-2xl font-bold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center text-white"
+              className="px-6 py-4 bg-indigo-600 rounded-2xl font-bold hover:bg-indigo-50 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center"
             >
               Dashboard
             </Link>
@@ -154,8 +154,8 @@ export default function TechnologyQuiz() {
         <Link href="/dashboard" className="text-sm font-medium text-gray-500 hover:text-white transition-colors flex items-center gap-2">
           <span>←</span> Back to Dashboard
         </Link>
-        <div className="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold text-indigo-400 uppercase tracking-widest">
-          Technology - 10th Std
+        <div className="px-4 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-xs font-bold text-rose-400 uppercase tracking-widest">
+          Arts & Literature
         </div>
       </header>
 
@@ -168,7 +168,7 @@ export default function TechnologyQuiz() {
           </div>
           <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-rose-500 to-pink-600 transition-all duration-500 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -187,7 +187,7 @@ export default function TechnologyQuiz() {
                 onClick={() => handleOptionSelect(option)}
                 className={`group p-6 rounded-2xl border text-left flex items-center justify-between transition-all duration-300 ${
                   selectedOption === option
-                    ? "bg-indigo-600 border-indigo-400 shadow-xl shadow-indigo-600/20 translate-x-1"
+                    ? "bg-rose-600 border-rose-400 shadow-xl shadow-rose-600/20 translate-x-1"
                     : "bg-white/5 border-white/10 hover:border-white/30 hover:bg-white/[0.07]"
                 }`}
               >
@@ -197,7 +197,7 @@ export default function TechnologyQuiz() {
                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                   selectedOption === option ? "border-white bg-white" : "border-white/20"
                 }`}>
-                  {selectedOption === option && <div className="w-2.5 h-2.5 bg-indigo-600 rounded-full" />}
+                  {selectedOption === option && <div className="w-2.5 h-2.5 bg-rose-600 rounded-full" />}
                 </div>
               </button>
             ))}
@@ -208,7 +208,7 @@ export default function TechnologyQuiz() {
           <button
             onClick={handleNext}
             disabled={!selectedOption}
-            className="px-10 py-4 bg-white text-black font-black rounded-2xl hover:bg-indigo-50 transition-all active:scale-[0.98] shadow-xl shadow-white/5 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100 uppercase tracking-widest text-sm"
+            className="px-10 py-4 bg-white text-black font-black rounded-2xl hover:bg-rose-50 transition-all active:scale-[0.98] shadow-xl shadow-white/5 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100 uppercase tracking-widest text-sm"
           >
             {currentStep === QUESTIONS.length - 1 ? "Finish Quiz" : "Next Question"}
           </button>
