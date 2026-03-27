@@ -24,8 +24,12 @@ export default function SignupPage() {
       });
       const data = await res.json();
       if (res.ok) {
-        setMessage(`Success: ${data.message}`);
-        setTimeout(() => router.push("/"), 2000);
+        localStorage.setItem("user", JSON.stringify({
+          id: data.user_id,
+          username: formData.username,
+          displayName: formData.display_name || formData.username
+        }));
+        router.push("/dashboard");
       } else {
         setMessage(`Error: ${data.detail || "Signup failed"}`);
       }

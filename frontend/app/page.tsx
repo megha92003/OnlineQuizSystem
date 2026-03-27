@@ -46,10 +46,17 @@ export default function Home() {
           <a href="#" className="hover:text-white transition-colors">Leaderboard</a>
           <a href="#" className="hover:text-white transition-colors">Pricing</a>
         </div>
-        <div className="flex items-center gap-4">
-          <button onClick={() => { setShowModal("signin"); setMessage(""); }} className="text-sm font-medium hover:text-purple-400 transition-colors">Log in</button>
-          <Link href="/signup" className="px-5 py-2.5 rounded-full bg-white text-black text-sm font-semibold hover:bg-zinc-200 transition-all active:scale-95">Get Started</Link>
-        </div>
+          <div className="flex items-center gap-8">
+            <Link href="/" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">How it works</Link>
+            <Link href="/" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Features</Link>
+            <Link href="/signin" className="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">Log In</Link>
+            <Link 
+              href="/signup" 
+              className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-bold transition-all shadow-lg shadow-indigo-600/20 active:scale-[0.98]"
+            >
+              Get Started
+            </Link>
+          </div>
       </nav>
       <main className="relative z-10 max-w-7xl mx-auto px-8 py-24 md:py-32 flex flex-col items-center text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-purple-300 mb-8 animate-fade-in">
