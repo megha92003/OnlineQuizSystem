@@ -7,67 +7,67 @@ import Link from "next/link";
 const QUESTIONS = [
   {
     id: 1,
-    question: "Who was the leader of the Nazi Party in Germany?",
-    options: ["Adolf Hitler", "Benito Mussolini", "Winston Churchill", "Joseph Stalin"],
-    answer: "Adolf Hitler",
+    question: "What is the main function of the CPU in a computer?",
+    options: ["Storing files", "Processing data", "Displaying images", "Managing power"],
+    answer: "Processing data",
   },
   {
     id: 2,
-    question: "In which year did the French Revolution begin?",
-    options: ["1776", "1789", "1812", "1492"],
-    answer: "1789",
+    question: "Which unit of measurement is used for CPU speed?",
+    options: ["Gigabytes (GB)", "Watts (W)", "Gigahertz (GHz)", "Megapixels (MP)"],
+    answer: "Gigahertz (GHz)",
   },
   {
     id: 3,
-    question: "The Industrial Revolution first started in which country?",
-    options: ["France", "USA", "Great Britain", "Germany"],
-    answer: "Great Britain",
+    question: "In a network, what does 'IP' stand for?",
+    options: ["Internal Program", "Internet Protocol", "Information Point", "Instant Presence"],
+    answer: "Internet Protocol",
   },
   {
     id: 4,
-    question: "Who is known as the 'Father of the Nation' in India?",
-    options: ["Jawaharlal Nehru", "Subhas Chandra Bose", "Mahatma Gandhi", "Sardar Patel"],
-    answer: "Mahatma Gandhi",
+    question: "Which of these is a non-volatile memory?",
+    options: ["RAM", "Cache", "ROM", "Virtual Memory"],
+    answer: "ROM",
   },
   {
     id: 5,
-    question: "The Treaty of Versailles ended which war?",
-    options: ["World War I", "World War II", "Civil War", "Napoleonic Wars"],
-    answer: "World War I",
+    question: "What is the full form of 'WWW' in a website address?",
+    options: ["World Wide Web", "World Wide Wireless", "Web World Wide", "Web Writing Way"],
+    answer: "World Wide Web",
   },
   {
     id: 6,
-    question: "Who painted the 'Mona Lisa'?",
-    options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
-    answer: "Leonardo da Vinci",
+    question: "Which protocol is primarily used to send emails?",
+    options: ["HTTP", "FTP", "SMTP", "POP3"],
+    answer: "SMTP",
   },
   {
     id: 7,
-    question: "The collapse of the Berlin Wall in 1989 marked the end of what?",
-    options: ["World War II", "Cold War", "Vietnam War", "Great Depression"],
-    answer: "Cold War",
+    question: "What is the smallest unit of digital information?",
+    options: ["Byte", "Bit", "Nibble", "Pixel"],
+    answer: "Bit",
   },
   {
     id: 8,
-    question: "Who was the first President of the United States?",
-    options: ["Thomas Jefferson", "Abraham Lincoln", "George Washington", "John Adams"],
-    answer: "George Washington",
+    question: "Which component connects all parts of a computer together?",
+    options: ["Hard Drive", "Power Supply", "Motherboard", "Video Card"],
+    answer: "Motherboard",
   },
   {
     id: 9,
-    question: "The 'Renaissance' began in which country?",
-    options: ["Spain", "Italy", "Greece", "France"],
-    answer: "Italy",
+    question: "What type of software is an Antivirus?",
+    options: ["System Software", "Application Software", "Utility Software", "Firmware"],
+    answer: "Utility Software",
   },
   {
     id: 10,
-    question: "Which ideology is based on common ownership of the means of production?",
-    options: ["Capitalism", "Fascism", "Communism", "Imperialism"],
-    answer: "Communism",
+    question: "What is the process of converting readable data into an unreadable format?",
+    options: ["Decryption", "Encryption", "Compression", "Formatting"],
+    answer: "Encryption",
   },
 ];
 
-export default function WorldHistoryQuiz() {
+export default function TechnologyQuiz() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -106,20 +106,20 @@ export default function WorldHistoryQuiz() {
   if (showResult) {
     return (
       <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-6 font-sans">
-        <div className="max-w-md w-full text-center space-y-8 animate-fade-in">
+        <div className="max-w-md w-full text-center space-y-8 animate-fade-in text-white">
           <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-5xl mx-auto shadow-2xl shadow-indigo-500/20 mb-6">
-            📜
+            🚀
           </div>
           <h1 className="text-4xl font-extrabold pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-            Quiz Completed!
+            Tech Wizard Status!
           </h1>
           <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-4">
-            <p className="text-gray-400 text-lg">Your History Score</p>
+            <p className="text-gray-400 text-lg">Your Score</p>
             <div className="text-6xl font-black text-indigo-400">
               {score} <span className="text-2xl text-gray-600 font-normal">/ {QUESTIONS.length}</span>
             </div>
             <p className="text-sm text-gray-500 italic mt-4">
-              {score === QUESTIONS.length ? "History Scholar! Unstoppable." : score >= 7 ? "Great knowledge! You're a history buff." : "Good effort! History is full of lessons."}
+              {score === QUESTIONS.length ? "Absolute Genius! You're a true tech expert." : score >= 7 ? "Impressive skills! You have a solid tech foundation." : "Technology is vast! Keep exploring and learning."}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 pt-4">
@@ -130,13 +130,13 @@ export default function WorldHistoryQuiz() {
                 setShowResult(false);
                 setSelectedOption(null);
               }}
-              className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all"
+              className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all text-white"
             >
               Retry
             </button>
             <Link
               href="/dashboard"
-              className="px-6 py-4 bg-indigo-600 rounded-2xl font-bold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center"
+              className="px-6 py-4 bg-indigo-600 rounded-2xl font-bold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center text-white"
             >
               Dashboard
             </Link>
@@ -155,7 +155,7 @@ export default function WorldHistoryQuiz() {
           <span>←</span> Back to Dashboard
         </Link>
         <div className="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold text-indigo-400 uppercase tracking-widest">
-          World History (10th Std)
+          Technology - 10th Std
         </div>
       </header>
 

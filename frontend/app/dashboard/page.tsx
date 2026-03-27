@@ -62,59 +62,61 @@ export default function DashboardPage() {
           {/* Main Content Area */}
           <div className="lg:col-span-2 space-y-10">
             <section>
-              <h1 className="text-4xl font-bold mb-2">Welcome back!</h1>
+              <h1 className="text-4xl font-bold mb-2 text-white">Welcome back!</h1>
               <p className="text-gray-400">Ready to challenge your knowledge today?</p>
             </section>
 
             <section className="space-y-6">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold">Explore Categories</h2>
+                <h2 className="text-2xl font-semibold text-white">Explore Categories</h2>
                 <Link href="#" className="text-indigo-400 hover:text-indigo-300 text-sm font-medium">View All</Link>
               </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Link href="/dashboard/categories/science-nature" className="group">
-                <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 text-left hover:scale-[1.02] transition-all duration-300">
-                  <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🔬</span>
-                  <h3 className="text-xl font-bold mb-1">Science & Nature</h3>
-                  <p className="text-sm text-gray-400">125 Quizzes</p>
-                </div>
-              </Link>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {/* Science & Nature */}
+                <Link href="/dashboard/categories/science-nature" className="group">
+                  <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 text-left hover:scale-[1.02] transition-all duration-300">
+                    <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🔬</span>
+                    <h3 className="text-xl font-bold mb-1 text-white">Science & Nature</h3>
+                    <p className="text-sm text-gray-400">125 Quizzes</p>
+                  </div>
+                </Link>
 
-              <Link href="/dashboard/categories/world-history" className="group">
-                <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 text-left hover:scale-[1.02] transition-all duration-300">
+                {/* Technology */}
+                <Link href="/dashboard/categories/technology" className="group">
+                  <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 text-left hover:scale-[1.02] transition-all duration-300">
+                    <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">💻</span>
+                    <h3 className="text-xl font-bold mb-1 text-white">Technology</h3>
+                    <p className="text-sm text-gray-400">10 MCQ (10th Std)</p>
+                  </div>
+                </Link>
+
+                {/* World History */}
+                <button className="group p-6 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 text-left hover:scale-[1.02] transition-all duration-300">
                   <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🌍</span>
-                  <h3 className="text-xl font-bold mb-1">World History</h3>
+                  <h3 className="text-xl font-bold mb-1 text-white">World History</h3>
                   <p className="text-sm text-gray-400">84 Quizzes</p>
-                </div>
-              </Link>
-
-              {[
-                { name: "Technology", icon: "💻", color: "from-indigo-500/20 to-purple-500/20", borderColor: "border-indigo-500/30", count: "210 Quizzes" },
-                { name: "Arts & Literature", icon: "🎨", color: "from-rose-500/20 to-pink-500/20", borderColor: "border-rose-500/30", count: "56 Quizzes" },
-              ].map((category, idx) => (
-                <button
-                  key={idx}
-                  className={`p-6 rounded-2xl bg-gradient-to-br ${category.color} border ${category.borderColor} text-left group hover:scale-[1.02] transition-all duration-300`}
-                >
-                  <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">{category.icon}</span>
-                  <h3 className="text-xl font-bold mb-1">{category.name}</h3>
-                  <p className="text-sm text-gray-400">{category.count}</p>
                 </button>
-              ))}
-            </div>
+
+                {/* Arts & Literature */}
+                <button className="group p-6 rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/20 border border-rose-500/30 text-left hover:scale-[1.02] transition-all duration-300">
+                  <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🎨</span>
+                  <h3 className="text-xl font-bold mb-1 text-white">Arts & Literature</h3>
+                  <p className="text-sm text-gray-400">56 Quizzes</p>
+                </button>
+              </div>
             </section>
           </div>
 
           {/* Sidebar / Stats Area */}
           <div className="space-y-8">
             <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-6">
-              <h3 className="text-xl font-bold">Your Performance</h3>
+              <h3 className="text-xl font-bold text-white">Your Performance</h3>
               
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
                   <div className="text-sm text-gray-400">Quizzes Taken</div>
-                  <div className="text-xl font-bold">0</div>
+                  <div className="text-xl font-bold text-white">0</div>
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
                   <div className="text-sm text-gray-400">Avg. Score</div>
@@ -126,16 +128,16 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <button className="w-full py-4 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-bold transition-all shadow-lg shadow-indigo-600/20">
+              <button className="w-full py-4 bg-indigo-600 hover:bg-indigo-50 rounded-xl font-bold transition-all shadow-lg shadow-indigo-600/20 text-white">
                 View Detailed Stats
               </button>
             </div>
 
             <div className="p-8 rounded-3xl bg-gradient-to-br from-indigo-600 to-purple-700 space-y-4 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform text-white">
                 <div className="text-6xl font-bold">💎</div>
               </div>
-              <h3 className="text-xl font-bold relative z-10">Upgrade to Pro</h3>
+              <h3 className="text-xl font-bold relative z-10 text-white">Upgrade to Pro</h3>
               <p className="text-indigo-100 text-sm opacity-90 relative z-10">Get access to exclusive quizzes and advanced analytics.</p>
               <button className="px-6 py-2 bg-white text-indigo-700 rounded-xl font-bold text-sm relative z-10 hover:bg-gray-100 transition-colors">
                 Learn More
