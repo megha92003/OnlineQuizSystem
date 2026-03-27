@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function DashboardPage() {
   const [user, setUser] = useState<any>(null);
   const router = useRouter();
+  const [stats, setStats] = useState({ taken: 0, avg: 0, rank: "---" });
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -14,6 +15,26 @@ export default function DashboardPage() {
       router.push("/signup");
     } else {
       setUser(JSON.parse(storedUser));
+      
+      // Load and calculate stats
+      const results = JSON.parse(localStorage.getItem("quiz_results") || "[]");
+      if (results.length > 0) {
+        const totalScore = results.reduce((acc: number, curr: any) => acc + curr.score, 0);
+        const totalPossible = results.reduce((acc: number, curr: any) => acc + curr.total, 0);
+        const avg = Math.round((totalScore / totalPossible) * 100);
+        
+        // Simple rank simulation
+        let rank = "B";
+        if (avg >= 90) rank = "S";
+        else if (avg >= 80) rank = "A";
+        else if (avg >= 60) rank = "C";
+        
+        setStats({
+          taken: results.length,
+          avg: avg,
+          rank: rank
+        });
+      }
     }
   }, [router]);
 
@@ -116,15 +137,15 @@ export default function DashboardPage() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
                   <div className="text-sm text-gray-400">Quizzes Taken</div>
-                  <div className="text-xl font-bold">0</div>
+                  <div className="text-xl font-bold">{stats.taken}</div>
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
                   <div className="text-sm text-gray-400">Avg. Score</div>
-                  <div className="text-xl font-bold text-green-400">-%</div>
+                  <div className="text-xl font-bold text-green-400">{stats.avg}%</div>
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
                   <div className="text-sm text-gray-400">Global Rank</div>
-                  <div className="text-xl font-bold text-indigo-400">#---</div>
+                  <div className="text-xl font-bold text-indigo-400">#{stats.rank}</div>
                 </div>
               </div>
 

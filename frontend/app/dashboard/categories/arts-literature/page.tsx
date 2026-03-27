@@ -97,6 +97,16 @@ export default function ArtsLiteratureQuiz() {
       setCurrentStep(currentStep + 1);
       setSelectedOption(null);
     } else {
+      // Save result to localStorage
+      const finalScore = selectedOption === QUESTIONS[currentStep].answer ? score + 1 : score;
+      const results = JSON.parse(localStorage.getItem("quiz_results") || "[]");
+      results.push({
+        category: "Arts & Literature",
+        score: finalScore,
+        total: QUESTIONS.length,
+        timestamp: new Date().toISOString()
+      });
+      localStorage.setItem("quiz_results", JSON.stringify(results));
       setShowResult(true);
     }
   };
