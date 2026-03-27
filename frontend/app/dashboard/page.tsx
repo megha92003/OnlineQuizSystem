@@ -149,9 +149,11 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <button className="w-full py-4 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-bold transition-all shadow-lg shadow-indigo-600/20">
-                View Detailed Stats
-              </button>
+              <Link href="/dashboard/stats" className="block w-full">
+                <button className="w-full py-4 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-bold transition-all shadow-lg shadow-indigo-600/20">
+                  View Detailed Stats
+                </button>
+              </Link>
             </div>
 
             <div className="p-8 rounded-3xl bg-gradient-to-br from-indigo-600 to-purple-700 space-y-4 relative overflow-hidden group">
