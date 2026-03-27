@@ -7,67 +7,67 @@ import Link from "next/link";
 const QUESTIONS = [
   {
     id: 1,
-    question: "What does 'HTTP' stand for?",
-    options: ["Hypertext Transfer Product", "Hypertext Transfer Protocol", "High Tech Transfer Protocol", "Hyperlink Transfer Protocol"],
-    answer: "Hypertext Transfer Protocol",
+    question: "Who wrote the tragedy 'Hamlet'?",
+    options: ["William Shakespeare", "John Milton", "Christopher Marlowe", "Ben Jonson"],
+    answer: "William Shakespeare",
   },
   {
     id: 2,
-    question: "Which part of the computer is known as the 'Brain'?",
-    options: ["RAM", "Hard Disk", "CPU", "Motherboard"],
-    answer: "CPU",
+    question: "Which literary device uses 'like' or 'as' for comparison?",
+    options: ["Metaphor", "Personification", "Simile", "Alliteration"],
+    answer: "Simile",
   },
   {
     id: 3,
-    question: "Which of the following is an Operating System?",
-    options: ["Google Chrome", "Windows", "Microsoft Word", "Adobe Photoshop"],
-    answer: "Windows",
+    question: "'The Starry Night' is a famous painting by which artist?",
+    options: ["Pablo Picasso", "Vincent van Gogh", "Claude Monet", "Salvador Dalí"],
+    answer: "Vincent van Gogh",
   },
   {
     id: 4,
-    question: "What is the shortcut key for 'Paste' in Windows?",
-    options: ["Ctrl + P", "Ctrl + C", "Ctrl + V", "Ctrl + X"],
-    answer: "Ctrl + V",
+    question: "What is the main character in a story called?",
+    options: ["Antagonist", "Protagonist", "Mentor", "Dynamic Character"],
+    answer: "Protagonist",
   },
   {
     id: 5,
-    question: "Which protocol is used for sending emails?",
-    options: ["HTTP", "SMTP", "FTP", "SNMP"],
-    answer: "SMTP",
+    question: "Which movement in art and literature was characterized by an interest in the supernatural and nature?",
+    options: ["Classicism", "Romanticism", "Realism", "Modernism"],
+    answer: "Romanticism",
   },
   {
     id: 6,
-    question: "What is the full form of 'URL'?",
-    options: ["Uniform Resource Locator", "Universal Resource Link", "United Resource Locator", "Uniform Research Locator"],
-    answer: "Uniform Resource Locator",
+    question: "What do we call a poem with 14 lines?",
+    options: ["Haiku", "Limerick", "Ode", "Sonnet"],
+    answer: "Sonnet",
   },
   {
     id: 7,
-    question: "What is the binary equivalent of the decimal number 10?",
-    options: ["1001", "1010", "1100", "1111"],
-    answer: "1010",
+    question: "Who is the author of the novel 'Pride and Prejudice'?",
+    options: ["Charlotte Brontë", "Mary Shelley", "Jane Austen", "George Eliot"],
+    answer: "Jane Austen",
   },
   {
     id: 8,
-    question: "Which language is primarily used for styling web pages?",
-    options: ["HTML", "Python", "CSS", "Java"],
-    answer: "CSS",
+    question: "Which Renaissance artist painted the 'Mona Lisa'?",
+    options: ["Michelangelo", "Raphael", "Donatello", "Leonardo da Vinci"],
+    answer: "Leonardo da Vinci",
   },
   {
     id: 9,
-    question: "What is the primary purpose of a firewall?",
-    options: ["Increasing Internet Speed", "Blocking Unauthorized Access", "Creating Database", "Compressing Files"],
-    answer: "Blocking Unauthorized Access",
+    question: "'Animal Farm' is an allegorical novella by which author?",
+    options: ["George Orwell", "Aldous Huxley", "Ray Bradbury", "Ernest Hemingway"],
+    answer: "George Orwell",
   },
   {
     id: 10,
-    question: "Which device is used to connect a computer to the Internet?",
-    options: ["Printer", "Scanner", "Modem", "Monitor"],
-    answer: "Modem",
+    question: "What is a long narrative poem about heroic deeds called?",
+    options: ["Lyric", "Epic", "Elegy", "Ballad"],
+    answer: "Epic",
   },
 ];
 
-export default function TechnologyQuiz() {
+export default function ArtsLiteratureQuiz() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -108,7 +108,7 @@ export default function TechnologyQuiz() {
       <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-6 font-sans">
         <div className="max-w-md w-full text-center space-y-8 animate-fade-in">
           <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-5xl mx-auto shadow-2xl shadow-indigo-500/20 mb-6">
-            💻
+            🎭
           </div>
           <h1 className="text-4xl font-extrabold pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
             Quiz Completed!
@@ -119,7 +119,7 @@ export default function TechnologyQuiz() {
               {score} <span className="text-2xl text-gray-600 font-normal">/ {QUESTIONS.length}</span>
             </div>
             <p className="text-sm text-gray-500 italic mt-4">
-              {score === QUESTIONS.length ? "Tech Genius! Perfect score." : score >= 7 ? "Impressive! You know your technology." : "Keep exploring the world of bits and bytes!"}
+              {score === QUESTIONS.length ? "Master of Arts! Perfect score." : score >= 7 ? "Excellent! You have a deep appreciation for the arts." : score >= 5 ? "Good job! You have a solid literary foundation." : "Keep exploring the wonderful world of arts and literature!"}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 pt-4">
@@ -136,7 +136,7 @@ export default function TechnologyQuiz() {
             </button>
             <Link
               href="/dashboard"
-              className="px-6 py-4 bg-indigo-600 rounded-2xl font-bold hover:bg-indigo-50 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center"
+              className="px-6 py-4 bg-indigo-600 rounded-2xl font-bold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center"
             >
               Dashboard
             </Link>
@@ -155,7 +155,7 @@ export default function TechnologyQuiz() {
           <span>←</span> Back to Dashboard
         </Link>
         <div className="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold text-indigo-400 uppercase tracking-widest">
-          Technology - 10th Standard
+          Arts & Literature
         </div>
       </header>
 
@@ -176,7 +176,7 @@ export default function TechnologyQuiz() {
 
         {/* Question Area */}
         <div className="space-y-10">
-          <h2 className="text-3xl md:text-3xl font-bold leading-tight animate-fade-in-up">
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight animate-fade-in-up">
             {QUESTIONS[currentStep].question}
           </h2>
 
