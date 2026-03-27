@@ -7,67 +7,67 @@ import Link from "next/link";
 const QUESTIONS = [
   {
     id: 1,
-    question: "Who wrote the tragedy 'Hamlet'?",
-    options: ["William Shakespeare", "John Milton", "Christopher Marlowe", "Ben Jonson"],
-    answer: "William Shakespeare",
+    question: "Who was the leader of the Nazi Party in Germany?",
+    options: ["Adolf Hitler", "Benito Mussolini", "Winston Churchill", "Joseph Stalin"],
+    answer: "Adolf Hitler",
   },
   {
     id: 2,
-    question: "Which literary device uses 'like' or 'as' for comparison?",
-    options: ["Metaphor", "Personification", "Simile", "Alliteration"],
-    answer: "Simile",
+    question: "In which year did the French Revolution begin?",
+    options: ["1776", "1789", "1812", "1492"],
+    answer: "1789",
   },
   {
     id: 3,
-    question: "'The Starry Night' is a famous painting by which artist?",
-    options: ["Pablo Picasso", "Vincent van Gogh", "Claude Monet", "Salvador Dalí"],
-    answer: "Vincent van Gogh",
+    question: "The Industrial Revolution first started in which country?",
+    options: ["France", "USA", "Great Britain", "Germany"],
+    answer: "Great Britain",
   },
   {
     id: 4,
-    question: "What is the main character in a story called?",
-    options: ["Antagonist", "Protagonist", "Mentor", "Dynamic Character"],
-    answer: "Protagonist",
+    question: "Who is known as the 'Father of the Nation' in India?",
+    options: ["Jawaharlal Nehru", "Subhas Chandra Bose", "Mahatma Gandhi", "Sardar Patel"],
+    answer: "Mahatma Gandhi",
   },
   {
     id: 5,
-    question: "Which movement in art and literature was characterized by an interest in the supernatural and nature?",
-    options: ["Classicism", "Romanticism", "Realism", "Modernism"],
-    answer: "Romanticism",
+    question: "The Treaty of Versailles ended which war?",
+    options: ["World War I", "World War II", "Civil War", "Napoleonic Wars"],
+    answer: "World War I",
   },
   {
     id: 6,
-    question: "What do we call a poem with 14 lines?",
-    options: ["Haiku", "Limerick", "Ode", "Sonnet"],
-    answer: "Sonnet",
-  },
-  {
-    id: 7,
-    question: "Who is the author of the novel 'Pride and Prejudice'?",
-    options: ["Charlotte Brontë", "Mary Shelley", "Jane Austen", "George Eliot"],
-    answer: "Jane Austen",
-  },
-  {
-    id: 8,
-    question: "Which Renaissance artist painted the 'Mona Lisa'?",
-    options: ["Michelangelo", "Raphael", "Donatello", "Leonardo da Vinci"],
+    question: "Who painted the 'Mona Lisa'?",
+    options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
     answer: "Leonardo da Vinci",
   },
   {
+    id: 7,
+    question: "The collapse of the Berlin Wall in 1989 marked the end of what?",
+    options: ["World War II", "Cold War", "Vietnam War", "Great Depression"],
+    answer: "Cold War",
+  },
+  {
+    id: 8,
+    question: "Who was the first President of the United States?",
+    options: ["Thomas Jefferson", "Abraham Lincoln", "George Washington", "John Adams"],
+    answer: "George Washington",
+  },
+  {
     id: 9,
-    question: "'Animal Farm' is an allegorical novella by which author?",
-    options: ["George Orwell", "Aldous Huxley", "Ray Bradbury", "Ernest Hemingway"],
-    answer: "George Orwell",
+    question: "The 'Renaissance' began in which country?",
+    options: ["Spain", "Italy", "Greece", "France"],
+    answer: "Italy",
   },
   {
     id: 10,
-    question: "What is a long narrative poem about heroic deeds called?",
-    options: ["Lyric", "Epic", "Elegy", "Ballad"],
-    answer: "Epic",
+    question: "Which ideology is based on common ownership of the means of production?",
+    options: ["Capitalism", "Fascism", "Communism", "Imperialism"],
+    answer: "Communism",
   },
 ];
 
-export default function ArtsLiteratureQuiz() {
+export default function WorldHistoryQuiz() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -108,18 +108,18 @@ export default function ArtsLiteratureQuiz() {
       <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-6 font-sans">
         <div className="max-w-md w-full text-center space-y-8 animate-fade-in">
           <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-5xl mx-auto shadow-2xl shadow-indigo-500/20 mb-6">
-            🎭
+            📜
           </div>
           <h1 className="text-4xl font-extrabold pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
             Quiz Completed!
           </h1>
           <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-4">
-            <p className="text-gray-400 text-lg">Your Score</p>
+            <p className="text-gray-400 text-lg">Your History Score</p>
             <div className="text-6xl font-black text-indigo-400">
               {score} <span className="text-2xl text-gray-600 font-normal">/ {QUESTIONS.length}</span>
             </div>
             <p className="text-sm text-gray-500 italic mt-4">
-              {score === QUESTIONS.length ? "Master of Arts! Perfect score." : score >= 7 ? "Excellent! You have a deep appreciation for the arts." : score >= 5 ? "Good job! You have a solid literary foundation." : "Keep exploring the wonderful world of arts and literature!"}
+              {score === QUESTIONS.length ? "History Scholar! Unstoppable." : score >= 7 ? "Great knowledge! You're a history buff." : "Good effort! History is full of lessons."}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 pt-4">
@@ -155,7 +155,7 @@ export default function ArtsLiteratureQuiz() {
           <span>←</span> Back to Dashboard
         </Link>
         <div className="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold text-indigo-400 uppercase tracking-widest">
-          Arts & Literature
+          World History (10th Std)
         </div>
       </header>
 

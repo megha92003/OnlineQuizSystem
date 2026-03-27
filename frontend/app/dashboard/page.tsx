@@ -81,18 +81,26 @@ export default function DashboardPage() {
                 </div>
               </Link>
 
+              <Link href="/dashboard/categories/world-history" className="group">
+                <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 text-left hover:scale-[1.02] transition-all duration-300">
+                  <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🌍</span>
+                  <h3 className="text-xl font-bold mb-1">World History</h3>
+                  <p className="text-sm text-gray-400">84 Quizzes</p>
+                </div>
+              </Link>
+
               {[
-                { name: "World History", icon: "🌍", color: "from-amber-500/20 to-orange-500/20", borderColor: "border-amber-500/30", count: "84 Quizzes" },
                 { name: "Technology", icon: "💻", color: "from-indigo-500/20 to-purple-500/20", borderColor: "border-indigo-500/30", count: "210 Quizzes" },
                 { name: "Arts & Literature", icon: "🎨", color: "from-rose-500/20 to-pink-500/20", borderColor: "border-rose-500/30", count: "56 Quizzes" },
               ].map((category, idx) => (
-                <Link href="/dashboard/categories/arts-literature" className="group">
-                  <div className="p-6 h-full rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/20 border border-rose-500/30 text-left hover:scale-[1.02] transition-all duration-300">
-                    <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">🎨</span>
-                    <h3 className="text-xl font-bold mb-1">Arts & Literature</h3>
-                    <p className="text-sm text-gray-400">56 Quizzes</p>
-                  </div>
-                </Link>
+                <button
+                  key={idx}
+                  className={`p-6 rounded-2xl bg-gradient-to-br ${category.color} border ${category.borderColor} text-left group hover:scale-[1.02] transition-all duration-300`}
+                >
+                  <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform">{category.icon}</span>
+                  <h3 className="text-xl font-bold mb-1">{category.name}</h3>
+                  <p className="text-sm text-gray-400">{category.count}</p>
+                </button>
               ))}
             </div>
             </section>
