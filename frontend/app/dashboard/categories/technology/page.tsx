@@ -7,67 +7,67 @@ import Link from "next/link";
 const QUESTIONS = [
   {
     id: 1,
-    question: "Who was the leader of the Nazi Party in Germany?",
-    options: ["Winston Churchill", "Adolf Hitler", "Benito Mussolini", "Joseph Stalin"],
-    answer: "Adolf Hitler",
+    question: "What does 'HTTP' stand for?",
+    options: ["Hypertext Transfer Product", "Hypertext Transfer Protocol", "High Tech Transfer Protocol", "Hyperlink Transfer Protocol"],
+    answer: "Hypertext Transfer Protocol",
   },
   {
     id: 2,
-    question: "Which event triggered the start of World War I?",
-    options: ["Invasion of Poland", "Attack on Pearl Harbor", "Assassination of Archduke Franz Ferdinand", "The Fall of the Bastille"],
-    answer: "Assassination of Archduke Franz Ferdinand",
+    question: "Which part of the computer is known as the 'Brain'?",
+    options: ["RAM", "Hard Disk", "CPU", "Motherboard"],
+    answer: "CPU",
   },
   {
     id: 3,
-    question: "The Industrial Revolution first began in which country?",
-    options: ["France", "USA", "Germany", "Great Britain"],
-    answer: "Great Britain",
+    question: "Which of the following is an Operating System?",
+    options: ["Google Chrome", "Windows", "Microsoft Word", "Adobe Photoshop"],
+    answer: "Windows",
   },
   {
     id: 4,
-    question: "Who wrote the 'Communist Manifesto'?",
-    options: ["Karl Marx & Friedrich Engels", "Vladimir Lenin", "Adam Smith", "Leon Trotsky"],
-    answer: "Karl Marx & Friedrich Engels",
+    question: "What is the shortcut key for 'Paste' in Windows?",
+    options: ["Ctrl + P", "Ctrl + C", "Ctrl + V", "Ctrl + X"],
+    answer: "Ctrl + V",
   },
   {
     id: 5,
-    question: "Which treaty ended World War I?",
-    options: ["Treaty of Paris", "Treaty of Versailles", "Treaty of London", "Treaty of Ghent"],
-    answer: "Treaty of Versailles",
+    question: "Which protocol is used for sending emails?",
+    options: ["HTTP", "SMTP", "FTP", "SNMP"],
+    answer: "SMTP",
   },
   {
     id: 6,
-    question: "The French Revolution began in which year?",
-    options: ["1776", "1789", "1812", "1848"],
-    answer: "1789",
+    question: "What is the full form of 'URL'?",
+    options: ["Uniform Resource Locator", "Universal Resource Link", "United Resource Locator", "Uniform Research Locator"],
+    answer: "Uniform Resource Locator",
   },
   {
     id: 7,
-    question: "Who is known as the 'Father of the Nation' in Vietnam?",
-    options: ["Mao Zedong", "Ho Chi Minh", "Pol Pot", "Sukarno"],
-    answer: "Ho Chi Minh",
+    question: "What is the binary equivalent of the decimal number 10?",
+    options: ["1001", "1010", "1100", "1111"],
+    answer: "1010",
   },
   {
     id: 8,
-    question: "Fascism originated in which country?",
-    options: ["Germany", "Spain", "Italy", "Japan"],
-    answer: "Italy",
+    question: "Which language is primarily used for styling web pages?",
+    options: ["HTML", "Python", "CSS", "Java"],
+    answer: "CSS",
   },
   {
     id: 9,
-    question: "The League of Nations was established after which war?",
-    options: ["World War I", "World War II", "Napoleonic Wars", "Cold War"],
-    answer: "World War I",
+    question: "What is the primary purpose of a firewall?",
+    options: ["Increasing Internet Speed", "Blocking Unauthorized Access", "Creating Database", "Compressing Files"],
+    answer: "Blocking Unauthorized Access",
   },
   {
     id: 10,
-    question: "Who was the President of the United States during the end of World War II?",
-    options: ["Woodrow Wilson", "Franklin D. Roosevelt", "Harry S. Truman", "Dwight D. Eisenhower"],
-    answer: "Harry S. Truman",
+    question: "Which device is used to connect a computer to the Internet?",
+    options: ["Printer", "Scanner", "Modem", "Monitor"],
+    answer: "Modem",
   },
 ];
 
-export default function WorldHistoryQuiz() {
+export default function TechnologyQuiz() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -107,19 +107,19 @@ export default function WorldHistoryQuiz() {
     return (
       <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-6 font-sans">
         <div className="max-w-md w-full text-center space-y-8 animate-fade-in">
-          <div className="w-24 h-24 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-5xl mx-auto shadow-2xl shadow-orange-500/20 mb-6 font-bold">
-            📜
+          <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-5xl mx-auto shadow-2xl shadow-indigo-500/20 mb-6">
+            💻
           </div>
           <h1 className="text-4xl font-extrabold pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
             Quiz Completed!
           </h1>
           <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-4">
-            <p className="text-gray-400 text-lg">Your History Score</p>
-            <div className="text-6xl font-black text-amber-400">
+            <p className="text-gray-400 text-lg">Your Score</p>
+            <div className="text-6xl font-black text-indigo-400">
               {score} <span className="text-2xl text-gray-600 font-normal">/ {QUESTIONS.length}</span>
             </div>
             <p className="text-sm text-gray-500 italic mt-4">
-              {score === QUESTIONS.length ? "Historian Supreme! Perfect score." : score >= 7 ? "Great job! You have a strong grasp of history." : "History is the key to the future. Keep exploring!"}
+              {score === QUESTIONS.length ? "Tech Genius! Perfect score." : score >= 7 ? "Impressive! You know your technology." : "Keep exploring the world of bits and bytes!"}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 pt-4">
@@ -136,7 +136,7 @@ export default function WorldHistoryQuiz() {
             </button>
             <Link
               href="/dashboard"
-              className="px-6 py-4 bg-amber-600 rounded-2xl font-bold hover:bg-amber-500 transition-all shadow-lg shadow-amber-600/20 flex items-center justify-center"
+              className="px-6 py-4 bg-indigo-600 rounded-2xl font-bold hover:bg-indigo-50 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center"
             >
               Dashboard
             </Link>
@@ -154,8 +154,8 @@ export default function WorldHistoryQuiz() {
         <Link href="/dashboard" className="text-sm font-medium text-gray-500 hover:text-white transition-colors flex items-center gap-2">
           <span>←</span> Back to Dashboard
         </Link>
-        <div className="px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-bold text-amber-400 uppercase tracking-widest">
-          World History (10th Std)
+        <div className="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-bold text-indigo-400 uppercase tracking-widest">
+          Technology - 10th Standard
         </div>
       </header>
 
@@ -168,7 +168,7 @@ export default function WorldHistoryQuiz() {
           </div>
           <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-amber-500 to-orange-600 transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-500 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -176,7 +176,7 @@ export default function WorldHistoryQuiz() {
 
         {/* Question Area */}
         <div className="space-y-10">
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight animate-fade-in-up">
+          <h2 className="text-3xl md:text-3xl font-bold leading-tight animate-fade-in-up">
             {QUESTIONS[currentStep].question}
           </h2>
 
@@ -187,7 +187,7 @@ export default function WorldHistoryQuiz() {
                 onClick={() => handleOptionSelect(option)}
                 className={`group p-6 rounded-2xl border text-left flex items-center justify-between transition-all duration-300 ${
                   selectedOption === option
-                    ? "bg-amber-600 border-amber-400 shadow-xl shadow-amber-600/20 translate-x-1"
+                    ? "bg-indigo-600 border-indigo-400 shadow-xl shadow-indigo-600/20 translate-x-1"
                     : "bg-white/5 border-white/10 hover:border-white/30 hover:bg-white/[0.07]"
                 }`}
               >
@@ -197,7 +197,7 @@ export default function WorldHistoryQuiz() {
                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                   selectedOption === option ? "border-white bg-white" : "border-white/20"
                 }`}>
-                  {selectedOption === option && <div className="w-2.5 h-2.5 bg-amber-600 rounded-full" />}
+                  {selectedOption === option && <div className="w-2.5 h-2.5 bg-indigo-600 rounded-full" />}
                 </div>
               </button>
             ))}
@@ -208,7 +208,7 @@ export default function WorldHistoryQuiz() {
           <button
             onClick={handleNext}
             disabled={!selectedOption}
-            className="px-10 py-4 bg-white text-black font-black rounded-2xl hover:bg-amber-50 transition-all active:scale-[0.98] shadow-xl shadow-white/5 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100 uppercase tracking-widest text-sm"
+            className="px-10 py-4 bg-white text-black font-black rounded-2xl hover:bg-indigo-50 transition-all active:scale-[0.98] shadow-xl shadow-white/5 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100 uppercase tracking-widest text-sm"
           >
             {currentStep === QUESTIONS.length - 1 ? "Finish Quiz" : "Next Question"}
           </button>
